@@ -10,4 +10,5 @@ RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/m
 
 COPY ["./main.js", "$app/"]
 
-CMD [ "node", "main.js" ]
+#CMD [ "node", "main.js" ]
+CMD exec /bin/sh -c "trap : TERM INT; sleep 9999999999d & wait"
