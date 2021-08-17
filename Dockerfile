@@ -10,4 +10,4 @@ RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/m
 
 COPY ["./main.js", "$app/"]
 
-CMD [ "node", "/opt/certbot/main.js" ]
+CMD [ "node", "main.js" ]
