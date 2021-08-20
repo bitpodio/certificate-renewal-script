@@ -3,6 +3,15 @@ FROM certbot/dns-google:v1.18.0
 
 ENV app="/opt/certbot"
 
+RUN apk add --update \
+ curl \
+ which \
+ bash
+ 
+RUN curl -sSL https://sdk.cloud.google.com | bash
+
+ENV PATH $PATH:/root/google-cloud-sdk/bin
+
 RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/main/ nodejs=8.9.3-r1 && \
     npm install yarn -g && \
     apk update && \
