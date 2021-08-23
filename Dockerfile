@@ -17,4 +17,4 @@ COPY ["./main.sh", "$app/"]
 RUN sed -i 's/\r$//' $app/main.sh  && \  
     chmod +x $app/main.sh
 
-CMD ["sh" , "main.sh"]
+#CMD ["sh" , "main.sh"]
