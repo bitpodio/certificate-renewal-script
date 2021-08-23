@@ -12,12 +12,9 @@ RUN curl -sSL https://sdk.cloud.google.com | bash
 
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 
-RUN apk add  --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/main/ nodejs=8.9.3-r1 && \
-    npm install yarn -g && \
-    apk update && \
-    apk add git --no-cache
+COPY ["./main.sh", "$app/"]
 
-COPY ["./main.js", "$app/"]
+RUN sed -i 's/\r$//' $app/main.sh  && \  
+    chmod +x $app/main.sh
 
-#CMD [ "node", "main.js" ]
-CMD exec /bin/sh -c "trap : TERM INT; sleep 9999999999d & wait"
+CMD ["sh" , "main.sh"]
