@@ -9,6 +9,6 @@ certbot certonly \
   -d *.star.workpay.io \
   -d *.mvc.workpay.io
 
-gcloud compute ssl-certificates create $CERT_NAME --certificate /etc/letsencrypt/live/$CERT_PATH/fullchain.pem --private-key /etc/letsencrypt/live/$CERT_PATH/privkey.pem
+gcloud compute ssl-certificates create bitpod-cert-$(printf '%(%Y-%m-%d)T\n' -1) --certificate /etc/letsencrypt/live/$CERT_PATH/fullchain.pem --private-key /etc/letsencrypt/live/$CERT_PATH/privkey.pem
 
-gcloud compute target-https-proxies update bitpod-test-lb-target-proxy-3 --ssl-certificates $CERT_NAME
+gcloud compute target-https-proxies update bitpod-test-lb-target-proxy-3 --ssl-certificates bitpod-cert-$(printf '%(%Y-%m-%d)T\n' -1)
