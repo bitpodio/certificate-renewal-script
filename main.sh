@@ -12,4 +12,5 @@ certbot certonly \
 
 gcloud compute ssl-certificates create $cert_name --certificate /etc/letsencrypt/live/$CERT_PATH/fullchain.pem --private-key /etc/letsencrypt/live/$CERT_PATH/privkey.pem &&
 
-gcloud compute target-https-proxies update bitpod-test-lb-target-proxy-3 --ssl-certificates $cert_name
+gcloud compute target-https-proxies update bitpod-test-lb-target-proxy-3 --ssl-certificates $cert_name &&
+gcloud compute target-https-proxies update bitpod-lb-production-target-proxy-2 --ssl-certificates $cert_name
